@@ -1,0 +1,67 @@
+@import '../styles/colors';
+@import '../styles/space';
+
+@media (max-width: 512px){
+  .resume {
+    flex-direction: column;
+  }
+}
+
+.resume {
+  display: flex;
+}
+
+.column {
+  flex-basis: 0;
+  flex-grow: 1;
+  margin: $PADDING_SMALL;
+}
+
+.section-title {
+  margin: $PADDING_MEDIUM;
+}
+
+.section-bar {
+  background-color: $BLUE;
+  height: $PADDING_SMALL;
+  margin: $PADDING_SMALL;
+}
+
+.entry {
+  color: $LIGHT;
+  display: flex;
+  flex-direction: column;
+  margin: $PADDING_SMALL;
+  padding: $PADDING_MEDIUM;
+}
+
+.entry-title {
+  color: $TEXT;
+  margin: $PADDING_SMALL 0;
+  line-height: 1.25;
+}
+
+.entry-company {
+  margin: $PADDING_SMALL 0;
+  line-height: 1.25;
+}
+
+.duration {
+  color: $BLACK;
+  margin-bottom: 1em;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.description {
+  color: $TEXT;
+  font-size: 14px;
+  line-height: 1.7em;
+  margin-bottom: $PADDING_SMALL;
+}
+
+ul {
+  list-style: circle;
+  margin-left: 1em;
+  margin-bottom: 0;
+}
