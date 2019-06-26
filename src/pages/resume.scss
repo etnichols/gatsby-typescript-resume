@@ -1,67 +1,95 @@
 @import '../styles/colors';
 @import '../styles/space';
 
-@media (max-width: 512px){
-  .resume {
-    flex-direction: column;
-  }
+ul {
+  list-style: circle;
+  margin-left: 1em;
+  margin-bottom: 0;
 }
 
-.resume {
+.resume-title {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.column {
-  flex-basis: 0;
-  flex-grow: 1;
-  margin: $PADDING_SMALL;
+.resume-body {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-width: 256px;
+  -moz-column-width: 256px;
+  column-width: 256px;
+  -webkit-column-rule: 1px dotted $SMOKE;
+  -moz-column-rule: 1px dotted $SMOKE;
+  column-rule: 1px dotted $SMOKE;
+}
+
+.resume-name {
+  margin-bottom: $SPACING_MEDIUM;
+}
+
+.section {
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title-container {
+  display: inline-block;
+  width: 100%;
 }
 
 .section-title {
-  margin: $PADDING_MEDIUM;
+  margin: $SPACING_SMALL $SPACING_XSMALL;
 }
 
 .section-bar {
   background-color: $BLUE;
-  height: $PADDING_SMALL;
-  margin: $PADDING_SMALL;
+  height: $SPACING_XSMALL;
+  margin: $SPACING_XSMALL;
 }
 
 .entry {
   color: $LIGHT;
   display: flex;
   flex-direction: column;
-  margin: $PADDING_SMALL;
-  padding: $PADDING_MEDIUM;
+  margin: $SPACING_SMALL;
 }
 
 .entry-title {
   color: $TEXT;
-  margin: $PADDING_SMALL 0;
+  margin: $SPACING_SMALL 0;
   line-height: 1.25;
 }
 
 .entry-company {
-  margin: $PADDING_SMALL 0;
+  margin: $SPACING_XSMALL 0;
   line-height: 1.25;
 }
 
-.duration {
+.entry-duration {
   color: $BLACK;
-  margin-bottom: 1em;
+  margin-bottom: $SPACING_MEDIUM;
   font-size: 14px;
   font-style: italic;
 }
 
-.description {
+.entry-description {
   color: $TEXT;
   font-size: 14px;
   line-height: 1.7em;
-  margin-bottom: $PADDING_SMALL;
+  margin-bottom: $SPACING_SMALL;
 }
 
-ul {
-  list-style: circle;
-  margin-left: 1em;
-  margin-bottom: 0;
+.title-section-description {
+  margin-bottom: $SPACING_MEDIUM;
+}
+
+.icon-section {
+  display: flex;
+  margin-bottom: $SPACING_LARGE;
+}
+
+.link-icon {
+  margin-right: $SPACING_MEDIUM;
 }

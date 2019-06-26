@@ -1,8 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `Gatsby Typescript Resume`,
-    description: `A simple, responsive resume using Gatsby and Typescript`,
-    author: `@e-nichols`,
+    description: `A simple, responsive resume using Gatsby and Typescript.`,
+    author: `John Doe`,
+    email: `johndoe123@gmail.com`,
+    github: `https://github.com/gatsbyjs`,
+    linkedin: `https://www.linkedin.com/company/gatsbyjs/`,
+    location: `New York, NY`,
+    medium: `https://medium.com/search?q=gatsby%20js`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -1,9 +1,11 @@
-import React, { FC } from "react"
-import Layout from "../components/layout"
+import { graphql, StaticQuery } from 'gatsby'
+import React, { FC } from 'react'
+import Icon from '../components/icon'
+import Layout from '../components/layout'
 
-import { Column, Duration, Entry, Resume, Section } from "../@types/resume.d.ts"
-import data from "../data/resume"
-import "./resume.scss"
+import { Duration, Entry, Resume, Section } from '../@types/resume.d.ts'
+import data from '../data/resume'
+import './resume.scss'
 
 const Page: FC<> = () => {
   return (
@@ -15,30 +17,81 @@ const Page: FC<> = () => {
 
 const RenderResume: FC<Resume> = ({ sections }) => {
   return (
-    <div className="resume">
-      <RenderColumn sections={sections.slice(0, 1)} />
-      <RenderColumn sections={sections.slice(1)} />
-    </div>
+    <>
+      <ResumeTitle />
+      <div className="resume-body">
+        {sections.map(section => (
+          <RenderSection key={`section-${section.title}`} {...section} />
+        ))}
+      </div>
+    </>
   )
 }
 
-/** Renders a column which can be one or more sections. */
-const RenderColumn: FC<Column> = ({ sections }) => {
+const ResumeTitle: FC<> = () => {
   return (
-    <div className="column">
-      {sections.map(section => (
-        <RenderSection key={`section-${section.title}`} {...section} />
-      ))}
-    </div>
+    <StaticQuery
+      query={graphql`
+        query {
+          site {
+            siteMetadata {
+              author
+              location
+              description
+              email
+              linkedin
+              github
+              medium
+            }
+          }
+        }
+      `}
+      render={data => {
+        const {
+          author,
+          location,
+          email,
+          github,
+          linkedin,
+          medium,
+          description,
+        } = data.site.siteMetadata
+
+        const iconsWithLinks = [
+          ['email', `mailto:${email}`],
+          ['github', github],
+          ['linkedin', linkedin],
+          ['medium', medium],
+        ]
+
+        return (
+          <div className="resume-title">
+          <h1 className="resume-name">{author}</h1>
+          <h5 className="title-section-description">
+            {location}
+          </h5>
+            <div className="icon-section">
+              {iconsWithLinks.map(([icon, href], i) => (
+                <a key={`link-${i}`} className="link-icon" href={href}>
+                  <Icon key={`link-${i}`} name={icon} />
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }}
+    />
   )
 }
 
 /** Renders a section, a titled list of entries. */
 const RenderSection: FC<Section> = ({ title, entries }) => {
   return (
-    <section>
-      <h2 className="section-title">{title}</h2>
-      <div className="section-bar" />
+    <section className="section">
+      <div className="section-title-container">
+        <h2 className="section-title">{title}</h2>
+        <div className="section-bar" />
+      </div>
       {entries.map((entry, i) => (
         <RenderEntry key={`${title}-entry-${i}`} {...entry} />
       ))}
@@ -56,12 +109,16 @@ const RenderEntry: FC<Entry> = ({
 }) => {
   const header = (
     <>
-      <h4 className="entry-title">
-        {link ? <a href={link}>{title}</a> : title}
-      </h4>
+      {title && (
+        <h4 className="entry-title">
+          {link ? <a href={link}>{title}</a> : title}
+        </h4>
+      )}
       {company && <h5 className="entry-company">{company}</h5>}
       {duration && (
-        <div className="duration">{`${duration.start} - ${duration.end}`}</div>
+        <div className="entry-duration">{`${duration.start} - ${
+          duration.end
+        }`}</div>
       )}
     </>
   )
@@ -79,7 +136,7 @@ const RenderEntry: FC<Entry> = ({
   return (
     <div className="entry">
       {header}
-      <div className="description">{body}</div>
+      <div className="entry-description">{body}</div>
     </div>
   )
 }
