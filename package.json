@@ -26,6 +26,7 @@
     "typography-theme-us-web-design-standards": "^0.16.19"
   },
   "devDependencies": {
+    "ghpages": "0.0.10",
     "prettier": "^1.17.0"
   },
   "keywords": [
@@ -38,7 +39,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public --branch master"
   },
   "repository": {
     "type": "git",

@@ -88,6 +88,15 @@ const data: Resume = {
       title: 'Projects',
       entries: [
         {
+          title: '3D video compression algorithm',
+          duration: {
+            start: 'May 2012',
+            end: 'September 2012',
+          },
+          description:
+            'Developed a \"middle out\" compression algorithm which achieved a Weissman score up to 5.2. Code available on Github.',
+        },
+        {
           title: 'Bicycle-powered XBox',
           duration: {
             start: 'March 2019',

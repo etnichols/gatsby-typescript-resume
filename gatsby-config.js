@@ -4,9 +4,9 @@ module.exports = {
     description: `A simple, responsive resume using Gatsby and Typescript.`,
     author: `John Doe`,
     email: `johndoe123@gmail.com`,
+    location: `New York, NY`,
     github: `https://github.com/gatsbyjs`,
     linkedin: `https://www.linkedin.com/company/gatsbyjs/`,
-    location: `New York, NY`,
     medium: `https://medium.com/search?q=gatsby%20js`,
   },
   plugins: [
