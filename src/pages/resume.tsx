@@ -1,5 +1,5 @@
 import { graphql, StaticQuery } from 'gatsby'
-import React, { FC } from 'react'
+import React, { FunctionComponent } from 'react'
 import Icon from '../components/icon'
 import Layout from '../components/layout'
 
@@ -7,7 +7,7 @@ import { Duration, Entry, Resume, Section } from '../@types/resume.d.ts'
 import data from '../data/resume'
 import './resume.scss'
 
-const Page: FC<> = () => {
+const Page: FunctionComponent = () => {
   return (
     <Layout>
       <RenderResume {...data} />
@@ -15,10 +15,10 @@ const Page: FC<> = () => {
   )
 }
 
-const RenderResume: FC<Resume> = ({ sections }) => {
+const RenderResume: FunctionComponent<Resume> = ({ sections }) => {
   return (
     <>
-      <ResumeTitle />
+     <ResumeTitle/>
       <div className="resume-body">
         {sections.map(section => (
           <RenderSection key={`section-${section.title}`} {...section} />
@@ -28,7 +28,7 @@ const RenderResume: FC<Resume> = ({ sections }) => {
   )
 }
 
-const ResumeTitle: FC<> = () => {
+const ResumeTitle: FunctionComponent<> = () => {
   return (
     <StaticQuery
       query={graphql`
@@ -71,9 +71,9 @@ const ResumeTitle: FC<> = () => {
             {location}
           </h5>
             <div className="icon-section">
-              {iconsWithLinks.map(([icon, href], i) => (
+              {iconsWithLinks.map(([iconName, href], i) => (
                 <a key={`link-${i}`} className="link-icon" href={href}>
-                  <Icon key={`link-${i}`} name={icon} />
+                  <Icon key={`link-${i}`} name={iconName} />
                 </a>
               ))}
             </div>
@@ -85,7 +85,7 @@ const ResumeTitle: FC<> = () => {
 }
 
 /** Renders a section, a titled list of entries. */
-const RenderSection: FC<Section> = ({ title, entries }) => {
+const RenderSection: FunctionComponent<Section> = ({ title, entries }) => {
   return (
     <section className="section">
       <div className="section-title-container">
@@ -100,7 +100,7 @@ const RenderSection: FC<Section> = ({ title, entries }) => {
 }
 
 /** A single entry, either a job entry or a list of skills. */
-const RenderEntry: FC<Entry> = ({
+const RenderEntry: FunctionComponent<Entry> = ({
   title,
   link,
   company,
