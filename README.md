@@ -3,7 +3,8 @@
 A responsive resume created with Gatsby and Typescript.
 
 ### Tutorial 
-https://etnichols.com/tutorials/resume-with-react-and-tsx
+[https://etnichols.com/tutorials/resume-with-react-and-tsx
+](https://etnichols.com/programming/resume-with-react-and-tsx)
 
 ### Usage instructions
 
